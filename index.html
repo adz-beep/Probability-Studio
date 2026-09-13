@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#06131e">
+  <title>Probability Studio — Make chance visible</title>
+  <meta name="description" content="Explore 15 probability distributions, calculate probabilities and quantiles, share charts, and watch live samples take shape on iPhone and iPad.">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="assets/icon.png">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Probability Studio home">Probability <span>Studio</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#explore">Explore</a>
+      <a href="#live">Live sample</a>
+      <a href="#support">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <img class="app-icon" src="assets/icon.png" alt="Probability Studio app icon">
+        <p class="eyebrow">Probability, made tangible</p>
+        <h1 id="hero-title">Get hands on<br>with probability.</h1>
+        <p class="hero-lede">Grab a distribution. Point to the answer you want.</p>
+        <div class="hero-facts" aria-label="App highlights">
+          <span>15 distributions</span>
+          <span>iPhone + iPad</span>
+          <span>Private by design</span>
+        </div>
+      </div>
+
+      <div class="compare-stage" data-theme-compare style="--split:76%">
+        <div class="compare-glow" aria-hidden="true"></div>
+        <div class="phone-shell">
+          <img src="assets/iphone-theory.png" alt="Probability Studio showing a selected upper tail of the Normal distribution in light mode">
+          <div class="compare-dark" aria-hidden="true"><img src="assets/studio-dark.png" alt=""></div>
+          <div class="compare-divider" aria-hidden="true"><span></span></div>
+          <input class="compare-range" type="range" min="0" max="100" value="76" aria-label="Reveal light or dark appearance">
+        </div>
+        <div class="compare-labels" aria-hidden="true"><span>Light</span><span>Dark</span></div>
+        <p class="compare-hint">Drag to change the light.</p>
+      </div>
+    </section>
+
+    <section class="statement" aria-label="Core experience">
+      <p><span>See the distribution.</span> <span>Find the probability.</span> <span>Understand both.</span></p>
+    </section>
+
+    <section class="explore-section" id="explore" aria-labelledby="explore-title">
+      <div class="section-heading">
+        <p class="eyebrow">Try it here</p>
+        <h2 id="explore-title">Probability at your fingertips.</h2>
+        <p>The same ideas, in miniature. Move the controls to select an area under a standard Normal curve or outcomes from a Binomial distribution.</p>
+      </div>
+
+      <div class="demo-grid">
+        <article class="demo-card" data-demo="normal">
+          <div class="demo-card-header">
+            <div><p class="demo-kind">Continuous</p><h3>Standard Normal</h3><p class="parameters">μ = 0, σ = 1</p></div>
+            <div class="segmented" role="group" aria-label="Normal selected region">
+              <button class="is-active" type="button" data-normal-tail="below" aria-pressed="true">Below</button>
+              <button type="button" data-normal-tail="above" aria-pressed="false">Above</button>
+            </div>
+          </div>
+          <div class="equation" aria-live="polite"><span data-normal-expression>P(X &lt; 1.00)</span><b data-normal-result>0.8413</b></div>
+          <canvas id="normal-chart" role="img" aria-label="Interactive standard Normal probability density chart"></canvas>
+          <label class="slider-row" for="normal-bound"><span>Selected value</span><output data-normal-bound>1.00</output></label>
+          <input id="normal-bound" type="range" min="-3" max="3" value="1" step="0.05">
+        </article>
+
+        <article class="demo-card" data-demo="binomial">
+          <div class="demo-card-header">
+            <div><p class="demo-kind">Discrete</p><h3>Binomial</h3><p class="parameters">n = 20, p = 0.5</p></div>
+            <div class="segmented" role="group" aria-label="Binomial selected region">
+              <button type="button" data-binomial-mode="below" aria-pressed="false">At most</button>
+              <button class="is-active" type="button" data-binomial-mode="exact" aria-pressed="true">Exactly</button>
+              <button type="button" data-binomial-mode="above" aria-pressed="false">At least</button>
+            </div>
+          </div>
+          <div class="equation" aria-live="polite"><span data-binomial-expression>P(X = 10)</span><b data-binomial-result>0.1762</b></div>
+          <canvas id="binomial-chart" role="img" aria-label="Interactive Binomial probability mass chart"></canvas>
+          <label class="slider-row" for="binomial-value"><span>Selected outcome</span><output data-binomial-value>10</output></label>
+          <input id="binomial-value" type="range" min="0" max="20" value="10" step="1">
+        </article>
+      </div>
+    </section>
+
+    <section class="live-section" id="live" aria-labelledby="live-title">
+      <div class="live-copy">
+        <p class="eyebrow">Live sample</p>
+        <h2 id="live-title">Watch chance take shape.</h2>
+        <p>One observation means very little. Let them arrive, and the theoretical shape gradually emerges from the noise.</p>
+        <div class="live-metrics" aria-live="polite">
+          <div><span data-live-count>0</span><small>Observations</small></div>
+          <div><span data-live-mean>—</span><small>Sample mean</small></div>
+        </div>
+        <div class="live-actions">
+          <button class="control-button" type="button" data-live-toggle>Pause</button>
+          <button class="control-button secondary" type="button" data-live-reset>Reset</button>
+        </div>
+      </div>
+      <div class="live-canvas-wrap">
+        <canvas id="live-chart" role="img" aria-label="Animated sample building towards a Normal distribution"></canvas>
+        <div class="live-key" aria-hidden="true"><span class="theory-key">Theory</span><span class="sample-key">Sample</span></div>
+      </div>
+    </section>
+
+    <section class="feature-section" aria-labelledby="feature-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Built for exploration</p>
+        <h2 id="feature-title">Start anywhere. Find your way.</h2>
+      </div>
+      <div class="feature-grid">
+        <article><span class="feature-number">01</span><h3>Explore by touch</h3><p>Swipe across a chart to select an area. Use two fingers for an interval, or tap an outcome on a discrete distribution.</p></article>
+        <article><span class="feature-number">02</span><h3>Calculate both ways</h3><p>Enter precise bounds to find a probability, or enter a probability to find its value.</p></article>
+        <article><span class="feature-number">03</span><h3>Share the picture</h3><p>Create a clean, labelled chart ready to save, copy or send.</p></article>
+        <article><span class="feature-number">04</span><h3>Learn as you go</h3><p>Every distribution has plain-language notes, key variables and an example.</p></article>
+      </div>
+    </section>
+
+    <section class="distribution-section" aria-labelledby="distribution-title">
+      <p class="eyebrow">The right shape for the question</p>
+      <h2 id="distribution-title">Fifteen distributions.<br>One coherent studio.</h2>
+      <div class="distribution-list" aria-label="Included probability distributions">
+        <span>Normal</span><span>Uniform</span><span>Exponential</span><span>Lognormal</span><span>Chi-squared</span>
+        <span>Student’s t</span><span>F</span><span>Beta</span><span>Gamma</span><span>Weibull</span>
+        <span>Binomial</span><span>Poisson</span><span>Bernoulli</span><span>Geometric</span><span>Negative Binomial</span>
+      </div>
+    </section>
+
+    <section class="support-section" id="support" aria-labelledby="support-title">
+      <div class="support-intro">
+        <p class="eyebrow">Support</p>
+        <h2 id="support-title">A little help.</h2>
+        <p>Probability Studio works offline and requires no account.</p>
+      </div>
+      <div class="questions">
+        <details><summary>Where should I start?</summary><p>On first launch, take the five-step interactive tour or explore straight away. Tap ? at the top to revisit the tour at any time.</p></details>
+        <details><summary>Where are the parameters?</summary><p>On iPhone, tap the sliders button. On iPad, open Studio controls from the sidebar button. Number fields and increment controls change the current distribution; Reset restores its defaults.</p></details>
+        <details><summary>How do I enter a precise range?</summary><p>Tap the probability button, choose the region, then enter the bounds. Calculations retain full internal precision while long values are rounded where space is limited.</p></details>
+        <details><summary>Can I find a value from a probability?</summary><p>Tap the probability result. Enter a percentage or decimal, then choose a lower tail, central interval or upper tail.</p></details>
+        <details><summary>How do I share a chart?</summary><p>Tap Share chart below the chart.</p></details>
+        <details><summary>Why does my sample differ from theory?</summary><p>Random samples vary. Small samples can differ noticeably; larger samples usually approximate the theoretical shape more closely.</p></details>
+        <details><summary>Why can’t a discrete distribution match every probability?</summary><p>Discrete outcomes come in steps. The calculator shows the probability actually attained by the selected cutoff or interval.</p></details>
+        <details><summary>Does the app collect data?</summary><p>No account is required, and calculations and sampling run on your device. Read the <a href="privacy.html">privacy policy</a> for full details.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="index.html">Probability <span>Studio</span></a>
+    <p>Probability made tangible.</p>
+    <div><a href="#support">Support</a><a href="privacy.html">Privacy</a></div>
+  </footer>
+  <script src="assets/site.js" defer></script>
+</body>
+</html>
